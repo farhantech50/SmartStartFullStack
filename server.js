@@ -1,4 +1,6 @@
 import dotenv from './utils/env.js';
+import { fileURLToPath} from 'url';
+import path from 'path';
 import express from 'express';
 import authRoutes from './routes/auth.routes.js';
 import degreeRoutes from './routes/degree.routes.js';
