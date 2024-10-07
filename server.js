@@ -55,10 +55,6 @@ app.use(cors({
   credentials: true,
 }));
 
-app.get('*',(req,res)=>{
-  res.sendFile(path.join(__dirname,'Dashboard/build','index.html'))
-})
-
 // API Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/degree", degreeRoutes);
@@ -73,6 +69,9 @@ const upload = multer({ storage });
 app.post('/fileUpload',upload.single("file"),fileUpload)
 app.get('/fileDownload',fileDownload)
 
+app.get('*',(req,res)=>{
+  res.sendFile(path.join(__dirname,'Dashboard/build','index.html')); //To connect react app
+})
 
 // Start the server
 app.listen(process.env.PORT, () => {
