@@ -41,7 +41,7 @@ const app = express();
 //To deploy Frontend and Backend in save Heroku App
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-app.use(express.static(path.join(__dirname,'Dashboard/build'))); //To connect react app
+app.use(express.static(path.join(__dirname,'..Dashboard/build'))); //To connect react app
 
 
 
