@@ -43,13 +43,20 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 app.use(express.static(path.join(__dirname,'Dashboard/build'))); //To connect react app
 
-
+//CSP Configuration
+app.use(helmet({
+  contentSecurityPolicy: {
+      directives: {
+          defaultSrc: ["'self'"],
+          connectSrc: ["'self'", "https://www.smartstart.cloud", "https://smartstart.cloud", "www.smartstart.cloud"]
+      }
+  }
+}));
 
 // Middleware
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(helmet());
 app.use(cors({
   origin: ["http://localhost:3000", "https://www.smartstart.cloud", "https://smartstart.cloud", "www.smartstart.cloud"],
   credentials: true,
